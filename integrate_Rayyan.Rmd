@@ -1,0 +1,93 @@
+---
+title: "integrate_Rayyan"
+author: "ML"
+date: "11/07/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r mysetup, include=FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE, collapse = TRUE, comment = "#>")
+sessionInfo()
+#install.packages("bibliometrix", dependencies=TRUE) ### installs bibliometrix package and dependencies
+library(bibliometrix)	#uploads the package
+library(tidyverse)
+# Note: output not displayed for this chunk
+```
+
+**Purpose:**   
+Integrating manual screening in Rayyan into bibliometric analyses workflow.
+(For now only for Scopus records).
+
+## Load original list of references
+Use the ris file exported from Scopus (Neal_scopus_full.ris) to do screening in Rayyan (the .bib files from Scopus may fail n Rayyan). 
+After screening, export all records into file, including leabels, abstract, resons, etc. 
+
+*As axample from Neal_scopus_full.ris out of 97 references, 30 mentioning word "meta" are included, and remaining 67 excluded. The results were exported to Neal_scopus_screened.csv (file renamed after exporting from the default name "articles.csv").*
+
+Upload the bib file exported from Scopus using "convert2df" function from bibliometrix package (this package does not work with .ris files). It will automatically convert the data from that file into the internal *bibliometrix* format.  
+
+```{r upload and convert original references, eval=TRUE}
+bib <- convert2df("./data/Neal_scopus_full.bib", dbsource = "scopus", format = "bibtex") # Convert to a bibliometric data frame
+names(bib)
+dim(bib) #97 35
+bib$CR[1] #contains Cited References
+#write.csv(bib, "data//Neal_scopus_full.csv", row.names = FALSE) #if you want to save this data frame as a csv file
+```
+
+Upload the csv file exported from Rayyan (bibliometrix will not work with .bib or .ris files exported from Rayyan due to some formatting changes happening there).
+
+```{r upload and convert screened references , eval=TRUE}
+screened <- read.csv("./data/Neal_scopus_screened.csv")
+names(screened)
+dim(screened) #97 19 - note that many fields get collapsed into the "notes" field
+screened$notes[1] #contains Cited References, but fnishes with decisions
+decisions <- word(screened$notes,-1) #extract last "word" from notes field
+screened$decisions <- word(decisions,-2, sep='\\"') #strip everything before and after decision word
+```
+
+Check if references in bib and screened are in teh same order
+
+```{r check reference order , eval=FALSE}
+bib$TI == str_to_upper(screened$title) #mostly yes (note that in bib all are in uppercase and some characters are stripped by bibliometrix)
+
+#Example of a mismatch due to some strig processing donewhen converting in biblometrix
+bib$TI[4]
+str_to_upper(screened$title[4])
+
+### remove punctuation and extra whitespace from titles and compare again [note: this might be slow for large datasets]
+bibTI <- str_replace_all(bib$TI,"[:punct:]","") %>% str_replace_all(.,"[ ]+", " ")
+screenedtitle <- str_to_upper(str_replace_all(screened$title,"[:punct:]","")) %>% str_replace_all(.,"[ ]+", " ")
+bibTI == screenedtitle #all matching now
+```
+
+Since the order of references is the same, we can just add decisions to the bib object   
+
+```{r add decisions to bib, eval=TRUE}
+bib$decisions <- str_to_upper(screened$decisions)
+names(bib)
+dim(bib) #97 36
+```
+
+Test with bibliometrix   
+
+```{r test bibliometrix 1, eval=TRUE}
+# Preliminary descriptive analyses using summary function
+results <- biblioAnalysis(bib, sep = ";")
+#summary(object = results, k = 10, pause = TRUE) #display a series of summary tables
+plot(results, k = 10, pause = TRUE) #this takes top 10 values from each plottable table
+```
+
+Subset bib obejct to included records only and test again
+
+```{r sibset bib, eval=TRUE}
+bib_incl <- filter(bib, decisions == "INCLUDED")
+dim(bib_incl) #30 rows now
+results <- biblioAnalysis(bib_incl, sep = ";")
+#summary(object = results, k = 10, pause = TRUE) #display a series of summary tables
+plot(results, k = 10, pause = TRUE) #this takes top 10 values from each plottable table
+```
+
+
