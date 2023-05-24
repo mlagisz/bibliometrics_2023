@@ -6,7 +6,7 @@ format:
     code-tools: true
 editor: visual
 author: "M.Lagisz"
-date: "03/06/2022"
+date: "23/05/2023"
 output:
   pdf_document: default
   html_document: default
