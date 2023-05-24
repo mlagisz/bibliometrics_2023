@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="M.Lagisz">
+
+<title>Learning markdown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="learn_markdown_files/libs/clipboard/clipboard.min.js"></script>
+<script src="learn_markdown_files/libs/quarto-html/quarto.js"></script>
+<script src="learn_markdown_files/libs/quarto-html/popper.min.js"></script>
+<script src="learn_markdown_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="learn_markdown_files/libs/quarto-html/anchor.min.js"></script>
+<link href="learn_markdown_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="learn_markdown_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="learn_markdown_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="learn_markdown_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="learn_markdown_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Learning markdown</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>M.Lagisz </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5/24/23</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Before the lesson:</strong><br>
+Please make sure you got the latest versions installed of:<br>
+* R (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>)<br>
+* RStudio Desktop (<a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a>)</p>
+<p><strong>Lesson objectives:</strong><br>
+* Learn and practice basic markdown notations<br>
+* Making simple markdown (Quarto) documents in RStudio</p>
+<p><strong>Lesson outline:</strong><br>
+* About this lesson<br>
+* Markdown<br>
+* Rmarkdown vs.&nbsp;Quatro<br>
+* Why we need markdown?<br>
+* Why RStudio?<br>
+* Starting RStudio<br>
+* Creating a new Quarto markdown (qmd) document<br>
+* Rendering qmd document<br>
+* Changing qmd document<br>
+* Code chunks<br>
+* Changing code chunks<br>
+* In-line R code<br>
+* More resources</p>
+<section id="about-this-lesson" class="level1">
+<h1>About this lesson</h1>
+<p>This lesson is prepared for these who are already familiar with R coding language, but have not used RStudio or markdown-based document formatting. Thus, we assume basic knowledge of R programming language and we aim to teach you only the basics of markdown and RStudio. By the end of this tutorial you should be able to create a simple html document containing markdown-formatted text, images and R code, all in RStudio.</p>
+<p>By the way, this document was created using markdown in RStudio!</p>
+<hr>
+</section>
+<section id="markdown" class="level1">
+<h1>Markdown</h1>
+<p>Markdown is a simple text formatting syntax for crating HTML documents (at least originally). It works by introducing special sets of formatting characters directly into the texts, which are understood by the text viewers and rendered as formatted text.</p>
+<section id="task-1" class="level3">
+<h3 class="anchored" data-anchor-id="task-1">TASK 1</h3>
+<p>Take a short online tutorial to learn the basics of the standard markdown (15-30min): https://commonmark.org/help/tutorial/</p>
+</section>
+<section id="task-2" class="level3">
+<h3 class="anchored" data-anchor-id="task-2">TASK 2</h3>
+<p>Have a look at the markdown reference page: https://commonmark.org/help/</p>
+<hr>
+</section>
+</section>
+<section id="rmarkdown-vs.-quatro" class="level1">
+<h1>Rmarkdown vs.&nbsp;Quatro</h1>
+<p>There are small differences between different versions of Markdown (just like English!), but the basic formatting conventions should work for most of the markdown styles. Documents integrating R code are frequently wriiten in R Markdown (Rmarkdown), which was introduced in 2012 via R knitr package (Xie, 2015).</p>
+<p>Rmarkdown is a version of Pandoc’s markdown formatting, which is in turn based on the standard Markdown you just learned above. Pandoc’s markdown (and Rmarkdown)has additional syntax available for formatting tables, footnotes, maths and other non-basic text features that are useful when preparing documents in R. For a complete list of Markdown formatting futures available via Pandoc, please visit the official documentation at <a href="https://pandoc.org/MANUAL.html#pandocs-markdown" class="uri">https://pandoc.org/MANUAL.html#pandocs-markdown</a> (actually, Pandoc is a universal converter for many markup formats, but we are not going to cover it here).</p>
+<p>However, in 2023 the Rmarkdown is being replaced by its new incarnation called <em>Quarto</em> (<a href="https://quarto.org/" class="uri">https://quarto.org/</a>). It can run multiple programming languages in one file and incorporates a few other innovations! We want you to learn the most cutting-edge stuff, and from this year we are teaching this class in Quarto rather than Rmarkdown.</p>
+<section id="task-3" class="level3">
+<h3 class="anchored" data-anchor-id="task-3">TASK 3</h3>
+<p>Have a look at the Quarto markdown cheat sheet (save the pdf for future reference!):<br>
+<a href="https://res.cloudinary.com/dyd911kmh/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf" class="uri">https://res.cloudinary.com/dyd911kmh/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf</a></p>
+<hr>
+</section>
+</section>
+<section id="why-we-need-markdown" class="level1">
+<h1>Why we need markdown?</h1>
+<section id="task-4" class="level3">
+<h3 class="anchored" data-anchor-id="task-4">TASK 4</h3>
+<p>Using information from the cheat sheet, try to find at least 3 reasons for using markdown when you work with R (or other coding language).</p>
+<hr>
+<p>In brief, rather than having your R code in one document and the text describing it in another, markdown documents allow combining these two (and other outputs, like tables and plots) in a single file.</p>
+<p>Apart of this, there are several main advantages of working with markdown documents:<br>
+* As in plain R file, you can save and execute code<br>
+* You can split your code into smaller units called “chunks”, which are tidier and easier to work with<br>
+* A markdown document gets translated (“renderted”) into an output document, and you have control on how it is formatted and what is included: elements such as R code, R text output, plots, tables, pictures, can be turned on or off<br>
+* You can use R code in-line inserts to dynamically update values presented in your text (i.e.&nbsp;no more coping and pasting results of statistical tests!)<br>
+* Once you know Rmarkdawn you can use it and its extensions to create a wide range of documents, including presentations, websites, and even books<br>
+* Finally, you can generate high quality and reproducible reports in various formats</p>
+</section>
+<section id="task-5" class="level3">
+<h3 class="anchored" data-anchor-id="task-5">TASK 5</h3>
+<p>Have a look at this 3-minute video about what’s possible with Quatro markdown:<br>
+<a href="https://youtu.be/e9qCS8ODs4o" class="uri">https://youtu.be/e9qCS8ODs4o</a> (and here is a similar video for Rmarkdown <a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a> - just for the curious ones!).</p>
+<hr>
+</section>
+</section>
+<section id="why-rstudio" class="level1">
+<h1>Why RStudio?</h1>
+<p>RStudio is a well-established and well-supported GUI (Graphical User Interface) that makes working with R code and markdown easier (and it is free and Open-Source as well). It does not take away the fun of typing and editing code in an “code editor” window and/or an R console! But, it also has menus and additional windows that display useful things, such as help info, your plots, lists of files, packages and objects stored in your computing environment, simplified Git interface, etc. These extras make coding and creating documents in RStudio much easier to learn and often more efficient. Especially, RStudio makes creating markdown documents easy. Let’s have a go at it.</p>
+<section id="task-6" class="level3">
+<h3 class="anchored" data-anchor-id="task-6">TASK 6</h3>
+<p>Have a quick look at the range of outputs that can be created using Quarto markdown:<br>
+<a href="https://quarto.org/docs/gallery/" class="uri">https://quarto.org/docs/gallery/</a></p>
+<hr>
+</section>
+</section>
+<section id="starting-rstudio" class="level1">
+<h1>Starting RStudio</h1>
+<section id="rstudio-window" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-window">RStudio window</h2>
+<p>You should have RStudio installed by now. Open it on your computer. You will see four standard panes and some tabs within panes (you can resize or close them once you know what settings work for you best, for now leave as they are).</p>
+<hr>
+</section>
+</section>
+<section id="creating-a-new-quarto-markdown-qmd-document" class="level1 page-columns page-full">
+<h1>Creating a new Quarto markdown (qmd) document</h1>
+<section id="task-7" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="task-7">TASK 7</h3>
+<p>From the top menu go to “File” -&gt; “New File” -&gt; from drop-down list select “Quarto markdown…”<br>
+A new window will pop up asking you for a Title and an Author (enter something suitable):</p>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-Quatro_new" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/New_Quatro_popup.png" class="img-fluid figure-img" width="541"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: New Quatro document pop-up window</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Keep the output format as .html for now, as the other 2 formats (pdf and Word document) may require additional installations of * Untick “Use visual markdown editor” box at the bottom (you can later swith between “Source” and “Visual” views using buttons in the top-left corner of your document window).</li>
+</ul>
+<p>Press “OK”.<br>
+A new document (file) tab will open in the main “Editor” RStudio window:</p>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-Quatro_doc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/New_Quatro_file.png" class="img-fluid figure-img" width="1115"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: New document opened with some default content</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Note that the document is pre-filled with some example content and basic instructions on using Quatro markdown in RStudio.</p>
+<hr>
+</section>
+</section>
+<section id="rendering-qmd-document" class="level1 page-columns page-full">
+<h1>Rendering qmd document</h1>
+<section id="task-8" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="task-8">TASK 8</h3>
+<p>Find the “-&gt; Render”” button on top of the code editor window and press it (or use keyboard shortcut Command+Shift+K (MAC) / Ctrl+Shift+S (Windows), there is also an option in the top menu).</p>
+<p>A new pop-up will open asking you to save the file first, so enter suitable name and save the file (the keyboard shortcut to save changes in the file later is Command+S (MAC) / Ctrl+S (Windows), there is also a floppy disc button on top of the window).</p>
+<p>You can switch the bottom window from the “Console”” tab to the “Background Jobs” tab, to have a look at some processing code that shoiuld appear there (useful when rendering does not work - you can then check error messages in this tab). A “rendered” html document should appear in a Viewer (or a new pop up) window.</p>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-Quatro_doc_rendered" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/Rendered_new_Quatro.png" class="img-fluid figure-img" width="1074"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Rendered example Quatro document</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>This rendered example html document has some text that is formatted, an Internet link, some R code, some R code output. The name of the file is the same as the name of the markdown document you just saved and named, but has <strong>.html</strong> as its file name extension (Quatro markdown documents have file extension - <strong>.qmd</strong>). The file be default gets saved in the same folder as your source (markdown) file.</p>
+<hr>
+</section>
+</section>
+<section id="changing-code-chunks" class="level1">
+<h1>Changing code chunks</h1>
+<p>Code chunks contain one or more lines of R code.<br>
+To distinguish R code from the plain text. each chunk is surrounded with three ACCENT GRAVE (`) characters (three at the start and three at the end.. Each chunk, after initial ” ``` “, has a code chunk header surrounded with curly braces {}. The header starts with the symbol”r” which indicates that R langiage should be used to exacute (run or interpret) the contents of this code chunk.</p>
+<section id="task-9" class="level3">
+<h3 class="anchored" data-anchor-id="task-9">TASK 9</h3>
+<p>In RStudio code editor window, go to the first code chunk (that is the first code chunk in the example file).<br>
+Add a following line at the end of the chunk:</p>
+<p><strong>print(‘hello Quatro’)</strong></p>
+<p>Note that a symbol * appeared next to file name in the tab - it indicates that the file contains unsaved changes.</p>
+<p>Save the changes, render the document and see the new output file.</p>
+<p>The code inside the R chunk should look like this:</p>
+<pre><code>1 + 1
+print('hello Quatro')</code></pre>
+<p>Save and render the document. In the rendered document (html), an additional (text) output should appear showing the output of the new line of code:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'hello Quatro'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "hello Quatro"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="task-10" class="level3">
+<h3 class="anchored" data-anchor-id="task-10">TASK 10</h3>
+<p>Back in RStudio code editor window, go to the first code chunk and add a formatting parameter label below the {r}:</p>
+<p><code>#| echo: false</code></p>
+<p>Save and render the file.<br>
+What happened?</p>
+<p>The R code of the first chunk of code should be hidden now. parameter “echo” determines whether the code itself should be shown or not.</p>
+</section>
+<section id="task-11" class="level3">
+<h3 class="anchored" data-anchor-id="task-11">TASK 11</h3>
+<p>Back in RStudio code editor window, go to the second code chunk and change the chunk formatting label from <code>#| echo: false</code> to <code>#| echo: true</code>.</p>
+<p>Save and render the file.<br>
+What happened?</p>
+<p>The R code of the first chunk should be visible again.</p>
+<p>Similarly to changing the visibility of the R code, you can turn on and off the output of the code (the stuff that is displayed in the R “console” window after each line of executed code) in the rendered document by using parameter “include” (TRUE or FALSE).<br>
+You can also set whether each individual chunk of code actually gets executed, by using parameter “eval” (TRUE or FALSE). This allows you to switch off the chunks that are not needed to be executed for some reason (e.g.&nbsp;when testing an alternative chunk of code).</p>
+<p>These were the most commonly used parameters of individual code chunks and we will practice using them in a few of the tasks below. However, you also need to know can also set these parameters globally - i.e.&nbsp;for the whole markdown document - by placing a special “setup” code chunk at the start of the document, using a “opts_chunk” function. You can add the code below as your first chunk (or on top of any R code) to alter the document-level settings:</p>
+<p><code>knitr::opts_chunk$set(echo = TRUE)</code></p>
+<p>This code sets up all the chunks below it to a default of displaying R code. It basically says: unless otherwise specified inside the chunk, for all chunks assume <code>echo:   true</code> (i.e.&nbsp;display R code from each chunk by default). You can do the same for any other standard formatting label.</p>
+</section>
+<section id="task-12" class="level3">
+<h3 class="anchored" data-anchor-id="task-12">TASK 12</h3>
+<p>Back in RStudio, in the code editor window, go to the first code chunk and change the chunk fomratting labels from <code>knitr::opts_chunk$set(echo = TRUE)</code> to <code>knitr::opts_chunk$set(eval = FALSE)</code>.</p>
+<p>Save and render the file.<br>
+What happened?</p>
+<p>Now, the code should be still visible, but the output should disappear ()unless a given chang has a label ‘#| eval: true’. Default RStudio setting is to evaluate all R code, but you can change this setting for all file or for individual code chunks.</p>
+</section>
+<section id="task-13" class="level3">
+<h3 class="anchored" data-anchor-id="task-13">TASK 13</h3>
+<p>Back in RStudio code editor window, go to the second code chunk and add a new chunk label <code>#| include: false</code></p>
+<p>Save and render the file.<br>
+What happened and why?</p>
+<p>Now, the output is gone from the rendered file.<br>
+The code gets executed, but we the output is not included in the rendered document.</p>
+<hr>
+</section>
+<section id="in-line-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="in-line-r-code">In-line R code</h2>
+<section id="task-14" class="level3">
+<h3 class="anchored" data-anchor-id="task-14">TASK 14</h3>
+<p>Back in RStudio code editor window, under the second code chunk (i.e.&nbsp;in the text section) write:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>The mean of 1 and 2 and 3 is <span class="in">`r mean(c(1,2,3))`</span>.   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save and render the file.<br>
+What happened?</p>
+<p>Now you should have a line of text with in-line value representing some calculations.<br>
+If you do this for some objects that are changed, this calculation will update automatically every time you render the Quatro document.</p>
+<p>So, you could ad a new chunk and in-text calculation based on the value created in that chunk:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># radius of a circle.  </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And the text below the chunk:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>For a circle with the radius <span class="in">`r x`</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>its area is <span class="in">`r pi * x^2`</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save and render the file.<br>
+What happened?</p>
+<hr>
+<p>Finally, you do not need to re-render the whole document each time. You can run still run individual (or groups of) lines of code by highlighting them and pressing Command+Enter (MAC) / Ctrl+Enter (Windows), as in a basic R editor. You can run individual chunks using several options (and keyboard shortcuts) listed under the Run button at the top-right of the code editor window (check it out now!). This gives you more flexibility and makes it faster to work with you R code. And that was one of the reasons for this tutorial.</p>
+<p>But that’s not all, there are many more secrets to productive work with RStudio.</p>
+<p>So, if you have some time, read about using projects in RStudio:<br>
+<a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects" class="uri">https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects</a><br>
+and this…<br>
+<a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/" class="uri">https://www.tidyverse.org/articles/2017/12/workflow-vs-script/</a><br>
+and start using it!</p>
+<hr>
+<p><em>We hope this lesson got you started on the path to beautiful and reproducible documents in markdown using RStudio… </em>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="more-resouces" class="level1">
+<h1>More resouces</h1>
+<p><strong>Quarto Markdown:</strong><br>
+* A tutoral details on using Quatro markdown in Rstudio: <a href="https://quarto.org/docs/get-started/hello/rstudio.html" class="uri">https://quarto.org/docs/get-started/hello/rstudio.html</a><br>
+* Quarto reference (guide) pages: <a href="https://quarto.org/docs/guide/" class="uri">https://quarto.org/docs/guide/</a></p>
+<p><strong>RStudio:</strong><br>
+* Keyboard shortcuts to speed you up in RStudio: <a href="https://appsilon.com/r-studio-shortcuts-and-tips/" class="uri">https://appsilon.com/r-studio-shortcuts-and-tips/</a><br>
+* Book “Getting started with RStudio”: <a href="https://www.cs.utexas.edu/~cannata/dataVis/Class%20Notes/Getting%20Started%20with%20RStudio.pdf" class="uri">https://www.cs.utexas.edu/~cannata/dataVis/Class%20Notes/Getting%20Started%20with%20RStudio.pdf</a></p>
+<!-- -->
+
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Learning markdown"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "M.Lagisz"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-05-24</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> short</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document: default</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: default</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="an">editor_options:</span><span class="co"> </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">  chunk_output_type: console</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">error =</span> <span class="cn">TRUE</span>) <span class="co">#allow some execution errors for demonstration purposes</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">collapse =</span> <span class="cn">TRUE</span>, <span class="at">comment =</span> <span class="st">"#&gt;"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bibliometrix)   </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>**Before the lesson:**    </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>Please make sure you got the latest versions installed of:    </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>R (<span class="ot">&lt;https://www.r-project.org/&gt;</span>)   </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>RStudio Desktop (<span class="ot">&lt;https://posit.co/downloads/&gt;</span>)   </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>**Lesson objectives:**   </span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Learn and practice basic markdown notations   </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Making simple markdown (Quarto) documents in RStudio   </span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>**Lesson outline:**   </span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>About this lesson   </span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Markdown   </span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Rmarkdown vs. Quatro   </span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Why we need markdown?   </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Why RStudio?   </span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Starting RStudio  </span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Creating a new Quarto markdown (qmd) document   </span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Rendering qmd document   </span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Changing qmd document     </span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Code chunks   </span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Changing code chunks   </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>In-line R code   </span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>More resources    </span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># About this lesson</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>This lesson is prepared for these who are already familiar with R coding language, but have not used RStudio or markdown-based document formatting. Thus, we assume basic knowledge of R programming language and we aim to teach you only the basics of markdown and RStudio. By the end of this tutorial you should be able to create a simple html document containing  markdown-formatted text, images and R code, all in RStudio.</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>By the way, this document was created using markdown in RStudio!</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markdown</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>Markdown is a simple text formatting syntax for crating HTML documents (at least originally). It works by introducing special sets of formatting characters directly into the texts, which are understood by the text viewers and rendered as formatted text.  </span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 1    </span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>Take a short online tutorial to learn the basics of the standard markdown (15-30min):</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>https://commonmark.org/help/tutorial/</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 2    </span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>Have a look at the markdown reference page:</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>https://commonmark.org/help/</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rmarkdown vs. Quatro </span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>There are small differences between different versions of Markdown (just like English!), but the basic formatting conventions should work for most of the markdown styles. Documents integrating R code are frequently wriiten in R Markdown (Rmarkdown), which was introduced in 2012 via R knitr package (Xie, 2015).   </span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>Rmarkdown is a version of Pandoc’s markdown formatting, which is in turn based on the standard Markdown you just learned above. Pandoc's markdown (and Rmarkdown)has additional syntax available for formatting tables, footnotes, maths and other non-basic text features that are useful when preparing documents in R. For a complete list of Markdown formatting futures available via Pandoc, please visit the official documentation at  <span class="ot">&lt;https://pandoc.org/MANUAL.html#pandocs-markdown&gt;</span> (actually, Pandoc is a universal converter for many markup formats, but we are not going to cover it here).   </span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>However, in 2023 the Rmarkdown is being replaced by its new incarnation called *Quarto* (<span class="ot">&lt;https://quarto.org/&gt;</span>). It can run multiple programming languages in one file and incorporates a few other innovations! We want you to learn the most cutting-edge stuff, and from this year we are teaching this class in Quarto rather than Rmarkdown.    </span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 3    </span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>Have a look at the Quarto markdown cheat sheet (save the pdf for future reference!):    </span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://res.cloudinary.com/dyd911kmh/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf&gt;</span>    </span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why we need markdown?    </span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 4    </span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>Using information from the cheat sheet, try to find at least 3 reasons for using markdown when you work with R (or other coding language).    </span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>In brief, rather than having your R code in one document and the text describing it in another, markdown documents allow combining these two (and other outputs, like tables and plots) in a single file.    </span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>Apart of this, there are several main advantages of working with markdown documents:    </span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>As in plain R file, you can save and execute code    </span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>You can split your code into smaller units called "chunks", which are tidier and easier to work with   </span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A markdown document gets translated ("renderted") into an output document, and you have control on how it is formatted and what is included: elements such as R code, R text output, plots, tables, pictures, can be turned on or off        </span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>You can use R code in-line inserts to dynamically update values presented in your text (i.e. no more coping and pasting results of statistical tests!)    </span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Once you know Rmarkdawn you can use it and its extensions to create a wide range of documents, including presentations, websites, and even books    </span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Finally, you can generate high quality and reproducible reports in various formats    </span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 5    </span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>Have a look at this 3-minute video about what’s possible with Quatro markdown:    </span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://youtu.be/e9qCS8ODs4o&gt;</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>(and here is a similar video for Rmarkdown <span class="ot">&lt;https://rmarkdown.rstudio.com/lesson-1.html&gt;</span> - just for the curious ones!).     </span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why RStudio?    </span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>RStudio is a well-established and well-supported GUI (Graphical User Interface) that makes working with R code and markdown easier (and it is free and Open-Source as well). It does not take away the fun of typing and editing code in an "code editor" window and/or an R console! But, it also has menus and additional windows that display useful things, such as help info, your plots, lists of files, packages and objects stored in your computing environment, simplified Git interface, etc. These extras make coding and creating documents in RStudio much easier to learn and often more efficient. Especially, RStudio makes creating markdown documents easy. Let's have a go at it.   </span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 6      </span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>Have a quick look at the range of outputs that can be created using Quarto markdown:   </span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://quarto.org/docs/gallery/&gt;</span> </span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="fu"># Starting RStudio   </span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## RStudio window   </span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>You should have RStudio installed by now. Open it on your computer. You will see four standard panes and some tabs within panes (you can resize or close them once you know what settings work for you best, for now leave as they are).   </span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="fu"># Creating a new Quarto markdown (qmd) document   </span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 7      </span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>From the top menu go to "File" -&gt; "New File" -&gt; from drop-down list select "Quarto markdown..."     </span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>A new window will pop up asking you for a Title and an Author (enter something suitable):   </span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Quatro_new</span></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "New Quatro document pop-up window"</span></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/New_Quatro_popup.png"</span>)</span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="ss"> * </span>Keep the output format as .html for now, as the other 2 formats (pdf and Word document) may require additional installations of  * Untick "Use visual markdown editor" box at the bottom (you can later swith between "Source" and "Visual" views using buttons in the top-left corner of your document window). </span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a>Press "OK".   </span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>A new document (file) tab will open in the main "Editor" RStudio window:   </span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Quatro_doc</span></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "New document opened with some default content"</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/New_Quatro_file.png"</span>)</span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>Note that the document is pre-filled with some example content and basic instructions on using Quatro markdown in RStudio.    </span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rendering qmd document </span></span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 8      </span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>Find the "-&gt; Render"" button on top of the code editor window and press it (or use keyboard shortcut Command+Shift+K (MAC) / Ctrl+Shift+S (Windows), there is also an option in the top menu).  </span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>A new pop-up will open asking you to save the file first, so enter suitable name and save the file (the keyboard shortcut to save changes in the file later is Command+S (MAC) / Ctrl+S (Windows), there is also a floppy disc button on top of the window).   </span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>You can switch the bottom window from the "Console"" tab to the "Background Jobs" tab, to have a look at some processing code that shoiuld appear there (useful when rendering does not work - you can then check error messages in this tab). A "rendered" html document should appear in a Viewer (or a new pop up) window.    </span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Quatro_doc_rendered</span></span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Rendered example Quatro document"</span></span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Rendered_new_Quatro.png"</span>)</span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>This rendered example html document has some text that is formatted, an Internet link, some R code, some R code output. The name of the file is the same as the name of the markdown document you just saved and named, but has **.html** as its file name extension (Quatro markdown documents have file extension - **.qmd**). The file be default gets saved in the same folder as your source (markdown) file.    </span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a><span class="fu"># Changing code chunks   </span></span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a>Code chunks contain one or more lines of R code.    </span>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>To distinguish R code from the plain text. each chunk is surrounded with three ACCENT GRAVE (`) characters (three at the start and three at the end..</span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>Each chunk, after initial " ``` ", has a code chunk header surrounded with curly braces {}. The header starts with the symbol "r" which indicates that R langiage should be used to exacute (run or interpret) the contents of this code chunk.      </span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 9     </span></span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>In RStudio code editor window, go to the first code chunk (that is the first code chunk in the example file).      </span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>Add a following line at the end of the chunk:   </span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>**print('hello Quatro')**</span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>Note that a symbol * appeared next to file name in the tab - it indicates that the file contains unsaved changes.   </span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>Save the changes, render the document and see the new output file.    </span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>The code inside the R chunk should look like this:   </span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a><span class="in">print('hello Quatro')</span></span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span>  </span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>Save and render the document.</span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>In the rendered document (html), an additional (text) output should appear showing the output of the new line of code:       </span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'hello Quatro'</span>)</span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 10     </span></span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a>Back in RStudio code editor window, go to the first code chunk and add a formatting parameter label below the {r}:   </span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>```#| echo: false```  </span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a>Save and render the file.    </span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>What happened?    </span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a>The R code of the first chunk of code should be hidden now. parameter "echo" determines whether the code itself should be shown or not.  </span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 11      </span></span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>Back in RStudio code editor window, go to the second code chunk and change the chunk formatting label from <span class="in">`#| echo: false`</span> to <span class="in">`#| echo: true`</span>.    </span>
+<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a>Save and render the file.    </span>
+<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>What happened?   </span>
+<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a>The R code of the first chunk should be visible again.    </span>
+<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a>Similarly to changing the visibility of the R code, you can turn on and off the output of the code (the stuff that is displayed in the R "console" window after each line of executed code) in the rendered document by using parameter "include" (TRUE or FALSE).    </span>
+<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a>You can also set whether each individual chunk of code actually gets executed, by using parameter "eval" (TRUE or FALSE). This allows you to switch off the chunks that are not needed to be executed for some reason (e.g. when testing an alternative chunk of code).      </span>
+<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a>These were the most commonly used parameters of individual code chunks and we will practice using them in a few of the tasks below. However, you also need to know can also set these parameters globally - i.e. for the whole markdown document - by placing a special "setup" code chunk at the start of the document, using a "opts_chunk" function. You can add the code below as your first chunk (or on top of any R code) to alter the document-level settings:</span>
+<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>```knitr::opts_chunk$set(echo = TRUE)```</span>
+<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a>This code sets up all the chunks below it to a default of displaying R code. It basically says: unless otherwise specified inside the chunk, for all chunks assume <span class="in">`echo:   true`</span> (i.e. display R code from each chunk by default).  You can do the same for any other standard formatting label.         </span>
+<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 12      </span></span>
+<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a>Back in RStudio, in the code editor window, go to the first code chunk and change the chunk fomratting labels from <span class="in">`knitr::opts_chunk$set(echo = TRUE)`</span> to <span class="in">`knitr::opts_chunk$set(eval = FALSE)`</span>.    </span>
+<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a>Save and render the file.   </span>
+<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a>What happened?   </span>
+<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>Now, the code should be still visible, but the output should disappear ()unless a given chang has a label '#| eval: true'. Default RStudio setting is to evaluate all R code, but you can change this setting for all file or for individual code chunks.   </span>
+<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 13      </span></span>
+<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>Back in RStudio code editor window, go to the second code chunk and add a new chunk label <span class="in">`#| include: false`</span> </span>
+<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a>Save and render the file.   </span>
+<span id="cb6-265"><a href="#cb6-265" aria-hidden="true" tabindex="-1"></a>What happened and why?   </span>
+<span id="cb6-266"><a href="#cb6-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-267"><a href="#cb6-267" aria-hidden="true" tabindex="-1"></a>Now, the output is gone from the rendered file.      </span>
+<span id="cb6-268"><a href="#cb6-268" aria-hidden="true" tabindex="-1"></a>The code gets executed, but we the output is not included in the rendered document.    </span>
+<span id="cb6-269"><a href="#cb6-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-270"><a href="#cb6-270" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-271"><a href="#cb6-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-line R code   </span></span>
+<span id="cb6-272"><a href="#cb6-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-273"><a href="#cb6-273" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 14      </span></span>
+<span id="cb6-274"><a href="#cb6-274" aria-hidden="true" tabindex="-1"></a>Back in RStudio code editor window, under the second code chunk (i.e. in the text section) write: </span>
+<span id="cb6-275"><a href="#cb6-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-276"><a href="#cb6-276" aria-hidden="true" tabindex="-1"></a><span class="in">````md</span></span>
+<span id="cb6-277"><a href="#cb6-277" aria-hidden="true" tabindex="-1"></a>The mean of 1 and 2 and 3 is <span class="in">`r knitr::inline_expr('mean(c(1,2,3))')`</span>.   </span>
+<span id="cb6-278"><a href="#cb6-278" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span>
+<span id="cb6-279"><a href="#cb6-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-280"><a href="#cb6-280" aria-hidden="true" tabindex="-1"></a>Save and render the file.    </span>
+<span id="cb6-281"><a href="#cb6-281" aria-hidden="true" tabindex="-1"></a>What happened?    </span>
+<span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a>Now you should have a line of text with in-line value representing some calculations.   </span>
+<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a>If you do this for some objects that are changed, this calculation will update automatically every time you render the Quatro document.   </span>
+<span id="cb6-285"><a href="#cb6-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-286"><a href="#cb6-286" aria-hidden="true" tabindex="-1"></a>So, you could ad a new chunk and in-text calculation based on the value created in that chunk:   </span>
+<span id="cb6-287"><a href="#cb6-287" aria-hidden="true" tabindex="-1"></a><span class="in">````md</span></span>
+<span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a>``<span class="in">`{r}`</span>r ''`</span>
+<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a>x &lt;- 5  # radius of a circle.  </span>
+<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span>
+<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a>And the text below the chunk:</span>
+<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a><span class="in">````md</span></span>
+<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a>For a circle with the radius <span class="in">`r knitr::inline_expr('x')`</span>,</span>
+<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>its area is <span class="in">`r knitr::inline_expr('pi * x^2')`</span>.</span>
+<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span>
+<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-300"><a href="#cb6-300" aria-hidden="true" tabindex="-1"></a>Save and render the file.    </span>
+<span id="cb6-301"><a href="#cb6-301" aria-hidden="true" tabindex="-1"></a>What happened?    </span>
+<span id="cb6-302"><a href="#cb6-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-303"><a href="#cb6-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-304"><a href="#cb6-304" aria-hidden="true" tabindex="-1"></a>****</span>
+<span id="cb6-305"><a href="#cb6-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-306"><a href="#cb6-306" aria-hidden="true" tabindex="-1"></a>Finally, you do not need to re-render the whole document each time.</span>
+<span id="cb6-307"><a href="#cb6-307" aria-hidden="true" tabindex="-1"></a>You can run still run individual (or groups of) lines of code by highlighting them and pressing Command+Enter (MAC) / Ctrl+Enter (Windows), as in a basic R editor. You can run individual chunks using several options (and keyboard shortcuts) listed under the Run button at the top-right of the code editor window (check it out now!). This gives you more flexibility and makes it faster to work with you R code. And that was one of the reasons for this tutorial.     </span>
+<span id="cb6-308"><a href="#cb6-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-309"><a href="#cb6-309" aria-hidden="true" tabindex="-1"></a>But that's not all, there are many more secrets to productive work with RStudio.   </span>
+<span id="cb6-310"><a href="#cb6-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-311"><a href="#cb6-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-312"><a href="#cb6-312" aria-hidden="true" tabindex="-1"></a>So, if you have some time, read about using projects in RStudio:     </span>
+<span id="cb6-313"><a href="#cb6-313" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects&gt;</span>   </span>
+<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a>and this...  </span>
+<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://www.tidyverse.org/articles/2017/12/workflow-vs-script/&gt;</span>    </span>
+<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a>and start using it!    </span>
+<span id="cb6-317"><a href="#cb6-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a>*****</span>
+<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-320"><a href="#cb6-320" aria-hidden="true" tabindex="-1"></a>*We hope this lesson got you started on the path to beautiful and reproducible documents in markdown using RStudio...    *.   </span>
+<span id="cb6-321"><a href="#cb6-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-322"><a href="#cb6-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-323"><a href="#cb6-323" aria-hidden="true" tabindex="-1"></a>*****</span>
+<span id="cb6-324"><a href="#cb6-324" aria-hidden="true" tabindex="-1"></a><span class="fu"># More resouces   </span></span>
+<span id="cb6-325"><a href="#cb6-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-326"><a href="#cb6-326" aria-hidden="true" tabindex="-1"></a>**Quarto Markdown:**      </span>
+<span id="cb6-327"><a href="#cb6-327" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A tutoral details on using Quatro markdown in Rstudio: <span class="ot">&lt;https://quarto.org/docs/get-started/hello/rstudio.html&gt;</span>    </span>
+<span id="cb6-328"><a href="#cb6-328" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Quarto reference (guide) pages:  <span class="ot">&lt;https://quarto.org/docs/guide/&gt;</span>    </span>
+<span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a>**RStudio:**      </span>
+<span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Keyboard shortcuts to speed you up in RStudio: <span class="ot">&lt;https://appsilon.com/r-studio-shortcuts-and-tips/&gt;</span>    </span>
+<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Book "Getting started with RStudio": <span class="ot">&lt;https://www.cs.utexas.edu/~cannata/dataVis/Class%20Notes/Getting%20Started%20with%20RStudio.pdf&gt;</span>    </span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
