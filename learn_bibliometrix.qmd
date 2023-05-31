@@ -6,7 +6,7 @@ format:
     code-tools: true
 editor: visual
 author: "M.Lagisz"
-date: 2023-05-24
+date: 2023-05-31
 date-format: short
 output:
   pdf_document: default
@@ -64,25 +64,35 @@ Terminal investment in animals is usually studied in three main ways:
  2. in experimental studies where animals are subject to immune challenges and their subsequent reproductive effort is compared to unchallenged animals of the same age,    
  3. in experimental studies where reproductive response to immune challenge is compared between animals of older ages versus younger ages.   
 
-You can read more on this Wiki page: https://en.wikipedia.org/wiki/Terminal_investment_hypothesis   
+You can read more on this Wiki page: <https://en.wikipedia.org/wiki/Terminal_investment_hypothesis>   
 
 We hope the topic is quite appealing and quiet easy to understand.There are several published reviews on terminal investment hypothesis and we can expect many publications related to this topic, as well as many researchers working on it. Is this so?  
 
-Today, we will try to run bibliometric analyses on the relevant sample of literature. Note that there are a few available  R packages (and many other online/software tools, and new are being developed) that can perform some of the tasks which we will practice during this exercise, and often they can do much more. For your own project you may want to try to use some other tools, but there is no single "perfect" tool that fits all possible analyses and that is easy and usable for all disciplines and types of research questions. Also note that the main purpose of this exercise is to familiarize you with the basic principles/issues of bibliometric analyses. You can always learn more in your own time if you are interested.       
+Today, we will try to run bibliometric analyses on the relevant sample of literature. Note that there are a few available  R packages (and many other online/software tools, and new are being developed) that can perform some of the tasks which we will practice during this exercise, and often they can do much more.    
+
+For your own project you may want to try to use some other tools, but there is no single "perfect" tool that fits all possible analyses and that is easy and usable for all disciplines and types of research questions. Also note that the main purpose of this exercise is to familiarize you with the basic principles/issues of bibliometric analyses. You can always learn more in your own time if you are interested.       
 
 
 ****
 
 *The search*
 
-First, we need to find a representative sample of academic publications on our topic of choice. For this, we will use cross-disciplinary database of academic literature, Scopus. This database has the largest coverage of the published literature and should give us the most complete picture. An alternative database, commonly used for broad academic literature searches and analyses, is Web of Science: https://www.webofknowledge.com/ (WoS; it has slightly different way of formatting search strings).   
+First, we need to find a representative sample of academic publications on our topic of choice. For this, we will use cross-disciplinary database of academic literature, Scopus (<https://www.scopus.com>; owned by Elsevier). This database has the largest coverage of the published literature and should give us the most complete picture. An alternative database, commonly used for broad academic literature searches and analyses, is Web of Science: <https://www.webofknowledge.com/> (WoS; it has slightly different way of formatting search strings).   
 
-You should have free access to Scopus and WoS database on campus, but you may not be able to access it from outside the campus unless you use UNSW VPN or other university proxy servers (try loging in via the Library). Free-access broad-coverage databases include BASE (Bielfield Academic Search Engine, https://www.base-search.net/)  and Lens (https://www.lens.org). Google Scholar (https://scholar.google.com/) is not recommended for this type of work, mainly because it is hard to export bibliometric records from the results list.    
+You should have free access to Scopus and WoS database on campus, but you may not be able to access it from outside the campus unless you use UNSW VPN or other university proxy servers (try logging in via the UNSW Library page, then search for a link to Scopus database).   
+
+
+Free-access broad-coverage databases include BASE (Bielfield Academic Search Engine, https://www.base-search.net/)  and Lens (https://www.lens.org). Google Scholar (https://scholar.google.com/) is not recommended for this type of work, mainly because it is hard to export bibliometric records from the results list.    
 
 ****   
 
 ### TASK 1    
-Go to Scopus search page: https://www.scopus.com/search/form.uri?display=basic and enter the phrase "terminal investment" (without quotation marks) in the basic search window, as follows:   
+Go to Scopus search page: <https://www.scopus.com/search>. Careful, there are several different search engines in Scopus:
+1. Authors (also a new Researcher discovery) - information about authors (and affiliations).  
+2. Sources - information about journals (and other collections of documents).  
+3. Documents - information about journal articles (and other documents, such as book chapters) - WE WILL USE THIS ONE!  It has two nterfaces: Basic and Advanced.    
+
+In the Documenet basic search (a simple single search window), enter the phrase "terminal investment" (without quotation marks) in the basic search window, as follows:   
 
 ```{r}
 #| echo: false
@@ -100,9 +110,9 @@ Why is that?
 
 ****   
 
-This is because our search is too simple. It allows us only to find the papers that explicitly mention terminal AND investment words in their title, abstract or keywords (the AND operator is a default one and it gets inserted automatically by the search software). To find a more relevant set of bibliometric records for our analyses, we need a more sophisticated search string.   
+This is because our search is too simple. It allows us only to find the papers that explicitly mention terminal AND investment words in their title, abstract or keywords (the AND operator is a default one and it gets inserted automatically by the search software). To find a more relevant set of bibliographic records for our analyses, we need a more sophisticated search string.   
 
-Additionally, we will narrow down our topic a little bit more and aim to find papers that use immune challenge approach in wild or semi-wild animal species (so, we try to exclude established lab model species such as mice and rats, domesticated animals such as dogs and pigs, and humans). Finding the best search string is a bit of an art, so we just provide you with this one to save time (make sure to copy the whole thing - you may need to scroll to the right to see the complete streing):   
+Additionally, we will narrow down our topic a little bit more and aim to find papers that use immune challenge approach in wild or semi-wild animal species (so, we try to exclude established lab model species such as mice and rats, domesticated animals such as dogs and pigs, and humans). Finding the best search string is a bit of an art, so we just provide you with this one to save time (make sure to copy the whole thing - you may need to scroll to the right to see the complete string):   
 
 ```
 TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort"  OR  "fecundity compensation"  OR  "reproductive compensation"  OR  "reproductive fitness"  OR  "reproductive investment"  OR  "reproductive success"  OR  "Life History Trade-Off*"  OR  "Phenotypic Plasticity" )  AND  ( "immune challeng*"  OR  "immunochalleng*"  OR  "infect*"  OR  lipopolysaccharide  OR  lps  OR  phytohemagglutinin  OR  pha  OR  "sheep red blood cells"  OR  srbc  OR  implant  OR  vaccin* ) )  AND NOT  TITLE-ABS-KEY ( load  OR  human  OR  people  OR  men  OR  women  OR  infant*  OR  rat  OR  rats  OR  mouse  OR  mice  OR  pig*  OR  pork  OR  beef  OR  cattle  OR  sheep  OR  lamb*  OR  chicken*  OR  calf*  OR  *horse* )  
@@ -112,7 +122,7 @@ TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort"  OR  "fecundi
 ****   
 
 ### TASK 2    
-You need to copy and paste the above search string into the Advanced Search tab of the Scopus Search page:
+You need to copy and paste the above search string into the Advanced Search tab of the Scopus search page:
 
 ```{r Scopus_TI_res_all_adv_search.png, echo=FALSE, fig.cap=" ", out.width='80%'}
 knitr::include_graphics("images/Scopus_TI_res_all_adv_search.png")
@@ -120,7 +130,7 @@ knitr::include_graphics("images/Scopus_TI_res_all_adv_search.png")
 
 ****   
 
-Press "Search"" button. You should see results like this:   
+Press "Search"" button. You should see results roughly like this:   
 
 
 ****   
@@ -137,7 +147,7 @@ knitr::include_graphics("images/Scopus_TI_res_all.png")
 
 ****   
 
-There are still over 1,300 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all an exclude all irrelevant papers).    
+There should be over 1,300 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all and exclude irrelevant papers).    
 
 On the left side of the results window you can see simple filters: year, most common author names, subject areas, etc. You can explore the whole set roughly by using "Analyze search results" link above the table of the hits:   
 
@@ -157,7 +167,7 @@ There are more graphs below, and you can expand and customise them a bit too - h
 
 ### TASK 3    
 
-Next, we can export the bibliometric records for more detailed bibliometric analyses in R. To do so, close the Scopus analyses window and go back to the list of the records found. First, select all records by clicking box "All" in the left top of the list of references. Then click the "Export" link to the right.    
+Next, we can export the bibliographic records for more detailed bibliometric analyses in R. To do so, close the Scopus analyses window and go back to the list of the records found. First, select all records by clicking box "All" in the left top of the list of references. Then click the "Export" link to the right.    
 
 A pop-up window with the export options will appear.   
 
@@ -217,7 +227,7 @@ After some processing, an object called "bib" is created. It contains a data fra
 
 ### TASK 5    
 What are the contents of the columns of our "bib" data frame?  Columns are labelled with a two-letter tags: `r names(bib)`.    
-For a complete list and descriptions of field tags used in *bibliometrix* you can have a look at this file:   http://www.bibliometrix.org/documents/Field_Tags_bibliometrix.pdf   
+For a complete list and descriptions of field tags used in *bibliometrix* you can have a look at this file:   <http://www.bibliometrix.org/documents/Field_Tags_bibliometrix.pdf>.    
 Our data frame contains just a subset of these codes. Which ones?   
  
 Note that column **bib$AU** contains authors of each paper (as surnames and initials) separated by semicolon (;). We can easily split these strings and extract a list of all author names to a vector:    
@@ -261,7 +271,7 @@ Luckily, *bibliometrix* package  has a handy function that summarises the inform
 
 **Note:** this and the following tasks require quite a bit of computational power, they may be slow or even halt on your computer.    
 In such case, for this exercise, make your data frame smaller by sub-setting it, e.g.:   
-"bib <- bib[1:500, ] #taking first 500 records". However, the results and plots you will produce with a sub-setted data frame will differ from the ones presented in this document.     
+"bib <- bib[1:500, ] #taking first 500 records". However, the results and plots you will produce with a subsetted data frame will differ from the ones presented in this document.     
 
 ```{r}
 # Preliminary descriptive analyses 
@@ -326,7 +336,7 @@ mostcitedLA$Papers[1:10,]
 
 So far, we looked only at the numbers - who or what gets cited most, either from the main papers list or from the lists of the references within these papers. Now it is time to look at the actual networks of citations and also other types of networks that can be created using our data set.   
 
-To do so, we will be creating various rectangular matrices which reflect connections of different attributes of Papers/Authors. These matrices than can be plotted as bipartite networks and analysed.  
+To do so, we will be creating various rectangular matrices which reflect connections of different attributes of Documents/Authors. These matrices than can be plotted as bipartite networks and analysed.  
 
 Co-citation or coupling networks are a special type of networks build from the information on scientific papers containing references to other scientific papers.   
 
@@ -343,7 +353,7 @@ NetMatrix <- biblioNetwork(bib, analysis = "coupling", network = "references", s
 net = networkPlot(NetMatrix, weighted = NULL, n = 10, Title = "Papers' bibliographic coupling", type = "fruchterman", size = 5, remove.multiple = TRUE, labelsize = 0.5)
 ```
 
-Above, we plotted only the top 10 most coupled papers (n=10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes - it gets slow and messy).   
+Above, we plotted only the top 10 most coupled papers (n = 10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes - it gets slow and messy).   
 What happens and why?    
 
   
@@ -357,7 +367,7 @@ NetMatrix <- biblioNetwork(bib, analysis = "coupling", network = "authors", sep 
 net = networkPlot(NetMatrix, weighted = NULL, n = 10, Title = "Authors' bibliographic coupling", type = "fruchterman", size = 5, remove.multiple = TRUE, labelsize = 0.8)
 ```
 
-Above, we plotted only the top 10 most coupled authors (n=10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes to >50 - it gets slow and messy).   
+Above, we plotted only the top 10 most coupled authors (n = 10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes to >50 - it gets slow and messy).   
 What happens and why?    
 
   
@@ -385,7 +395,7 @@ NetMatrix <- biblioNetwork(bib, analysis = "collaboration", network = "authors",
 net <- networkPlot(NetMatrix, weighted = NULL, n = 10, Title = "Authors' collaborations", type = "fruchterman", size = 5, remove.multiple = TRUE, labelsize = 0.5)
 ```
 
-Above, we plotted only the top 10 most collaborating authors (n=10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes - it gets slow and messy).   
+Above, we plotted only the top 10 most collaborating authors (n = 10). Try increasing this number to 100 (would not recommend further increasing the number of displayed nodes - it gets slow and messy).   
 What happens and why?    
 
 
@@ -400,14 +410,14 @@ NetMatrix <- biblioNetwork(bib, analysis = "collaboration", network = "countries
 net <- networkPlot(NetMatrix, n = 10, Title = "Country Collaboration", type = "auto", size = TRUE, remove.multiple = FALSE, labelsize = 0.5)
 ```
 
-Above, we plotted only the top 10 most collaborating countries (n=10). Try increasing this number to 50 (would not recommend further increasing the number of displayed nodes to >100 - it gets slow and messy).   
+Above, we plotted only the top 10 most collaborating countries (n = 10). Try increasing this number to 50 (would not recommend further increasing the number of displayed nodes to >100 - it gets slow and messy).   
 What happens and why? 
 
 
 ****  
 
 ### TASK 14     
-**Keyword co-occurrences** - we can also visualise which papers share most keywords (from Scopus database).    
+**Keyword co-occurrences** - we can also visualise which papers share most keywords (from the Scopus database).    
 
 ```{r}
 NetMatrix <- biblioNetwork(bib, analysis = "co-occurrences", network = "keywords", sep = ";")
@@ -453,17 +463,17 @@ Only articles with minimum of 10 citations are included in the above analysis, i
 **MORE TO DO**    
 You can use different types of network plots - just tweak "type" parameter in the *networkPlot* function (check the vignette for the available options). "Type" parameter indicates the network map plotting layout: circle, kamada-kawai, mds, etc.     
 
-You can use non-R tools to visualise bibliographic networks, e.g. VOSviewer software by Nees Jan van Eck and Ludo Waltman (http://www.vosviewer.com). When in R function you use type=“vosviewer”, the function will export the network as a standard "pajek" network file (named “vosnetwork.net”), which can then be used in other network-plotting software, including VOSviewer.   
+You can use non-R tools to visualise bibliographic networks, e.g. VOSviewer software by Nees Jan van Eck and Ludo Waltman (<http://www.vosviewer.com>). When in R function you use type=“vosviewer”, the function will export the network as a standard "pajek" network file (named “vosnetwork.net”), which can then be used in other network-plotting software, including VOSviewer.   
 
 
 ****   
 
 ## Resources   
 
-* Bibliometrix webpage: http://www.bibliometrix.org/  and documentation:  http://www.bibliometrix.org/documents.html        
-* A more detailed *bibliometrix* package tutorial: https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html    
-* Another useful R package - Revtools:  http://revtools.net/   
-* Stand-alone GUI software - VOSviewer: http://www.vosviewer.com/    
+* Bibliometrix webpage (includes an online "biblioshiny" app): <http://www.bibliometrix.org/>.        
+* A more detailed *bibliometrix* information and links on GitHub: <https://github.com/massimoaria/bibliometrix>.    
+* Another useful R package - Revtools:  <http://revtools.net/>.   
+* Stand-alone GUI software (introduced above) - VOSviewer: <http://www.vosviewer.com/>.    
 
 
 ```{r}
