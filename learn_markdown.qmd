@@ -60,7 +60,7 @@ Markdown is a simple text formatting syntax for crating HTML documents (at least
 
 ### TASK 1    
 Take a short online tutorial to learn the basics of the standard markdown (15-30min):
-https://commonmark.org/help/tutorial/
+<https://commonmark.org/help/tutorial/>
 
 ### TASK 2    
 Have a look at the markdown reference page:
@@ -318,5 +318,5 @@ and start using it!
 * Quarto reference (guide) pages:  <https://quarto.org/docs/guide/>    
 
 **RStudio:**      
-* Keyboard shortcuts to speed you up in RStudio: <https://appsilon.com/r-studio-shortcuts-and-tips/>    
-* Book "Getting started with RStudio": <https://www.cs.utexas.edu/~cannata/dataVis/Class%20Notes/Getting%20Started%20with%20RStudio.pdf>    
+* Keyboard shortcuts to speed you up in RStudio: <https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE>    
+* RStudio tutorial: <https://www.datacamp.com/tutorial/r-studio-tutorial>    
