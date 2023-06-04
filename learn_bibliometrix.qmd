@@ -64,7 +64,7 @@ Terminal investment in animals is usually studied in three main ways:
  2. in experimental studies where animals are subject to immune challenges and their subsequent reproductive effort is compared to unchallenged animals of the same age,    
  3. in experimental studies where reproductive response to immune challenge is compared between animals of older ages versus younger ages.   
 
-You can read more on this Wiki page: <https://en.wikipedia.org/wiki/Terminal_investment_hypothesis>   
+You can read more on this Wiki page: <https://en.wikipedia.org/wiki/Terminal_investment_hypothesis>. We now actually completed a  meta-analysis on this topic and published our findings - you can find our published paper at <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10176797/>).   
 
 We hope the topic is quite appealing and quiet easy to understand.There are several published reviews on terminal investment hypothesis and we can expect many publications related to this topic, as well as many researchers working on it. Is this so?  
 
@@ -79,10 +79,10 @@ For your own project you may want to try to use some other tools, but there is n
 
 First, we need to find a representative sample of academic publications on our topic of choice. For this, we will use cross-disciplinary database of academic literature, Scopus (<https://www.scopus.com>; owned by Elsevier). This database has the largest coverage of the published literature and should give us the most complete picture. An alternative database, commonly used for broad academic literature searches and analyses, is Web of Science: <https://www.webofknowledge.com/> (WoS; it has slightly different way of formatting search strings).   
 
-You should have free access to Scopus and WoS database on campus, but you may not be able to access it from outside the campus unless you use UNSW VPN or other university proxy servers (try logging in via the UNSW Library page, then search for a link to Scopus database).   
+You should have free access to Scopus and WoS database on campus, but you may not be able to access it from outside the campus unless you use UNSW VPN or other university proxy servers (try logging in via the UNSW Library page, <https://www.library.unsw.edu.au>, then search for a link to Scopus database).   
 
 
-Free-access broad-coverage databases include BASE (Bielfield Academic Search Engine, https://www.base-search.net/)  and Lens (https://www.lens.org). Google Scholar (https://scholar.google.com/) is not recommended for this type of work, mainly because it is hard to export bibliometric records from the results list.    
+Free-access broad-coverage databases include BASE (Bielfield Academic Search Engine, <https://www.base-search.net/>)  and Lens (https://www.lens.org). Google Scholar (<https://scholar.google.com/>) is not recommended for this type of work, mainly because it is hard to export bibliometric records from the results list.    
 
 ****   
 
@@ -90,9 +90,9 @@ Free-access broad-coverage databases include BASE (Bielfield Academic Search Eng
 Go to Scopus search page: <https://www.scopus.com/search>. Careful, there are several different search engines in Scopus:
 1. Authors (also a new Researcher discovery) - information about authors (and affiliations).  
 2. Sources - information about journals (and other collections of documents).  
-3. Documents - information about journal articles (and other documents, such as book chapters) - WE WILL USE THIS ONE!  It has two nterfaces: Basic and Advanced.    
+3. Documents - information about journal articles (and other documents, such as book chapters) - WE WILL USE THIS ONE!  It has two interfaces: Basic and Advanced.    
 
-In the Documenet basic search (a simple single search window), enter the phrase "terminal investment" (without quotation marks) in the basic search window, as follows:   
+In the Document basic search (a simple single search window), enter the phrase "terminal investment" (without quotation marks) in the basic search window, as follows:   
 
 ```{r}
 #| echo: false
@@ -147,7 +147,7 @@ knitr::include_graphics("images/Scopus_TI_res_all.png")
 
 ****   
 
-There should be over 1,300 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all and exclude irrelevant papers).    
+There should be over 1,400 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all and exclude irrelevant papers).    
 
 On the left side of the results window you can see simple filters: year, most common author names, subject areas, etc. You can explore the whole set roughly by using "Analyze search results" link above the table of the hits:   
 
@@ -192,7 +192,9 @@ knitr::include_graphics("images/Scopus_TI_res_all_export_bib.png")
 Click "Export" button. A file named "Scopus" (with extension matching your export type file, e.g., bib) will be saved to your downloads folder.    
 Note that when you export references with their reference lists included in the records, the resulting files are quite large (in our case around 16Mb).   
 
-In case you did not succeed exporting the files (or wish to work with exactly the same ones we used, or you cannot access Scopus), the files downloaded on 27/05/2019 are provided (note tha a standard way is to store them inside a "/data" sub-directory).   
+For this exercise, you can reduce your data set by applying some additional filters - e.g. including only literature from the last 5 years.      
+
+In case you did not succeed exporting the files (or wish to work with exactly the same ones we used, or you cannot access Scopus), the files downloaded on 27/05/2019 are provided (note that a standard way is to store them inside a "/data" sub-directory).   
 
 
 ****   
