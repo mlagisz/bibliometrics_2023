@@ -97,7 +97,6 @@ In the Document basic search (a simple single search window), enter the phrase "
 ```{r}
 #| echo: false
 #| label: fig-Scopus
-#| fig-cap: ""
 #| layout-ncol: 1
 #| column: page
 knitr::include_graphics("images/Scopus_TI_res_simple_search.png")
@@ -125,6 +124,10 @@ TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort"  OR  "fecundi
 You need to copy and paste the above search string into the Advanced Search tab of the Scopus search page:
 
 ```{r Scopus_TI_res_all_adv_search.png, echo=FALSE, fig.cap=" ", out.width='80%'}
+#| echo: false
+#| label: fig-Scopus_TI_search
+#| layout-ncol: 1
+#| column: page
 knitr::include_graphics("images/Scopus_TI_res_all_adv_search.png")
 ```
 
@@ -138,7 +141,6 @@ Press "Search"" button. You should see results roughly like this:
 ```{r}
 #| echo: false
 #| label: fig-Scopus_TI
-#| fig-cap: ""
 #| layout-ncol: 1
 #| column: page
 knitr::include_graphics("images/Scopus_TI_res_all.png")
@@ -154,7 +156,6 @@ On the left side of the results window you can see simple filters: year, most co
 ```{r}
 #| echo: false
 #| label: fig-Scopus_TI_analyses
-#| fig-cap: ""
 #| layout-ncol: 1
 #| column: page
 knitr::include_graphics("images/Scopus_TI_res_analaysis.png")
@@ -180,7 +181,6 @@ Note that, unfortunately, Scopus limits number of exported records to 2,000. For
 ```{r}
 #| echo: false
 #| label: fig-Scopus_export
-#| fig-cap: ""
 #| layout-ncol: 1
 #| column: page
 knitr::include_graphics("images/Scopus_TI_res_all_export_bib.png")

@@ -205,9 +205,16 @@ Why is that?</p>
 <section id="task-2" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="task-2">TASK 2</h3>
 <p>You need to copy and paste the above search string into the Advanced Search tab of the Scopus search page:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="images/Scopus_TI_res_all_adv_search.png" class="img-fluid" style="width:80.0%"></p>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-Scopus_TI_search" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/Scopus_TI_res_all_adv_search.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <hr>
@@ -219,7 +226,7 @@ Why is that?</p>
 <div id="fig-Scopus_TI" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/Scopus_TI_res_all.png" class="img-fluid figure-img" width="1277"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -234,7 +241,7 @@ Why is that?</p>
 <div id="fig-Scopus_TI_analyses" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/Scopus_TI_res_analaysis.png" class="img-fluid figure-img" width="1272"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -257,7 +264,7 @@ For bibliometric analyses on the citations among papers, it is essential to tick
 <div id="fig-Scopus_export" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/Scopus_TI_res_all_export_bib.png" class="img-fluid figure-img" width="1216"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: <strong>?(caption)</strong></figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1028,90 +1035,90 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
 <span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus</span></span>
-<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ""</span></span>
-<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
-<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
-<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_simple_search.png"</span>)</span>
-<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>****   </span>
-<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>Hey, this does not look good... - many documents were found, and most of them are completely unrelated (e.g. on building shipping terminals).   </span>
-<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a>Why is that?    </span>
-<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>****   </span>
-<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a>This is because our search is too simple. It allows us only to find the papers that explicitly mention terminal AND investment words in their title, abstract or keywords (the AND operator is a default one and it gets inserted automatically by the search software). To find a more relevant set of bibliographic records for our analyses, we need a more sophisticated search string.   </span>
-<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a>Additionally, we will narrow down our topic a little bit more and aim to find papers that use immune challenge approach in wild or semi-wild animal species (so, we try to exclude established lab model species such as mice and rats, domesticated animals such as dogs and pigs, and humans). Finding the best search string is a bit of an art, so we just provide you with this one to save time (make sure to copy the whole thing - you may need to scroll to the right to see the complete string):   </span>
-<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="in">TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort"  OR  "fecundity compensation"  OR  "reproductive compensation"  OR  "reproductive fitness"  OR  "reproductive investment"  OR  "reproductive success"  OR  "Life History Trade-Off*"  OR  "Phenotypic Plasticity" )  AND  ( "immune challeng*"  OR  "immunochalleng*"  OR  "infect*"  OR  lipopolysaccharide  OR  lps  OR  phytohemagglutinin  OR  pha  OR  "sheep red blood cells"  OR  srbc  OR  implant  OR  vaccin* ) )  AND NOT  TITLE-ABS-KEY ( load  OR  human  OR  people  OR  men  OR  women  OR  infant*  OR  rat  OR  rats  OR  mouse  OR  mice  OR  pig*  OR  pork  OR  beef  OR  cattle  OR  sheep  OR  lamb*  OR  chicken*  OR  calf*  OR  *horse* )  </span></span>
-<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_simple_search.png"</span>)</span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a>Hey, this does not look good... - many documents were found, and most of them are completely unrelated (e.g. on building shipping terminals).   </span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>Why is that?    </span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a>This is because our search is too simple. It allows us only to find the papers that explicitly mention terminal AND investment words in their title, abstract or keywords (the AND operator is a default one and it gets inserted automatically by the search software). To find a more relevant set of bibliographic records for our analyses, we need a more sophisticated search string.   </span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a>Additionally, we will narrow down our topic a little bit more and aim to find papers that use immune challenge approach in wild or semi-wild animal species (so, we try to exclude established lab model species such as mice and rats, domesticated animals such as dogs and pigs, and humans). Finding the best search string is a bit of an art, so we just provide you with this one to save time (make sure to copy the whole thing - you may need to scroll to the right to see the complete string):   </span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a><span class="in">TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort"  OR  "fecundity compensation"  OR  "reproductive compensation"  OR  "reproductive fitness"  OR  "reproductive investment"  OR  "reproductive success"  OR  "Life History Trade-Off*"  OR  "Phenotypic Plasticity" )  AND  ( "immune challeng*"  OR  "immunochalleng*"  OR  "infect*"  OR  lipopolysaccharide  OR  lps  OR  phytohemagglutinin  OR  pha  OR  "sheep red blood cells"  OR  srbc  OR  implant  OR  vaccin* ) )  AND NOT  TITLE-ABS-KEY ( load  OR  human  OR  people  OR  men  OR  women  OR  infant*  OR  rat  OR  rats  OR  mouse  OR  mice  OR  pig*  OR  pork  OR  beef  OR  cattle  OR  sheep  OR  lamb*  OR  chicken*  OR  calf*  OR  *horse* )  </span></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>****   </span>
-<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 2    </span></span>
-<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a>You need to copy and paste the above search string into the Advanced Search tab of the Scopus search page:</span>
-<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Scopus_TI_res_all_adv_search.png, echo=FALSE, fig.cap=" ", out.width='80%'}</span></span>
-<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_all_adv_search.png"</span>)</span>
-<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a>****   </span>
-<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a>Press "Search"" button. You should see results roughly like this:   </span>
-<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 2    </span></span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a>You need to copy and paste the above search string into the Advanced Search tab of the Scopus search page:</span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Scopus_TI_res_all_adv_search.png, echo=FALSE, fig.cap=" ", out.width='80%'}</span></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_TI_search</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_all_adv_search.png"</span>)</span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>****   </span>
 <span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>Press "Search"" button. You should see results roughly like this:   </span>
 <span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_TI</span></span>
-<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ""</span></span>
-<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
-<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
-<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_all.png"</span>)</span>
-<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_TI</span></span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_all.png"</span>)</span>
+<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>There should be over 1,400 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all and exclude irrelevant papers).    </span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>****   </span>
 <span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>On the left side of the results window you can see simple filters: year, most common author names, subject areas, etc. You can explore the whole set roughly by using "Analyze search results" link above the table of the hits:   </span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>There should be over 1,400 records retrieved from the Scopus database. Some look relevant and many are not, but that is always the case, for a systematic review or a meta-analysis we would manually screen all and exclude irrelevant papers).    </span>
 <span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_TI_analyses</span></span>
-<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ""</span></span>
-<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
-<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
-<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_analaysis.png"</span>)</span>
-<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a>There are more graphs below, and you can expand and customise them a bit too - have a look!   </span>
-<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>On the left side of the results window you can see simple filters: year, most common author names, subject areas, etc. You can explore the whole set roughly by using "Analyze search results" link above the table of the hits:   </span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_TI_analyses</span></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_analaysis.png"</span>)</span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a>There are more graphs below, and you can expand and customise them a bit too - have a look!   </span>
 <span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a>****   </span>
-<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 3    </span></span>
-<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a>Next, we can export the bibliographic records for more detailed bibliometric analyses in R. To do so, close the Scopus analyses window and go back to the list of the records found. First, select all records by clicking box "All" in the left top of the list of references. Then click the "Export" link to the right.    </span>
-<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a>A pop-up window with the export options will appear.   </span>
-<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a>First, select the format of the export: we will uses .bib file (BibTex format of references, one of the standard ones).   </span>
-<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>Second, select which fields have to be exported by clicking the boxes on top of each column (or as needed).   </span>
-<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>For bibliometric analyses on the citations among papers, it is essential to tick the box next to "Include references" (i.e. data on the cited documents).   </span>
-<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a>Note that, unfortunately, Scopus limits number of exported records to 2,000. For longer lists of records, you will need to split them in smaller chunks for the export and then merge into a single larger data set (not covered in this tutorial; WoS export limits are 1,000 records).    </span>
-<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_export</span></span>
-<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ""</span></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a>****   </span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### TASK 3    </span></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a>Next, we can export the bibliographic records for more detailed bibliometric analyses in R. To do so, close the Scopus analyses window and go back to the list of the records found. First, select all records by clicking box "All" in the left top of the list of references. Then click the "Export" link to the right.    </span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>A pop-up window with the export options will appear.   </span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>First, select the format of the export: we will uses .bib file (BibTex format of references, one of the standard ones).   </span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>Second, select which fields have to be exported by clicking the boxes on top of each column (or as needed).   </span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a>For bibliometric analyses on the citations among papers, it is essential to tick the box next to "Include references" (i.e. data on the cited documents).   </span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a>Note that, unfortunately, Scopus limits number of exported records to 2,000. For longer lists of records, you will need to split them in smaller chunks for the export and then merge into a single larger data set (not covered in this tutorial; WoS export limits are 1,000 records).    </span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-Scopus_export</span></span>
 <span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 1</span></span>
 <span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page</span></span>
 <span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Scopus_TI_res_all_export_bib.png"</span>)</span>
