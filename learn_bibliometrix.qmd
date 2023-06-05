@@ -6,7 +6,7 @@ format:
     code-tools: true
 editor: visual
 author: "M.Lagisz"
-date: 2023-05-31
+date: 2023-06-05
 date-format: short
 output:
   pdf_document: default
