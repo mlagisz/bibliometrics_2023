@@ -1,0 +1,310 @@
+---
+title: "Integrate Rayyan and run analyses"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+editor: visual
+author: "M.Lagisz"
+date: 2023-07-14
+date-format: short
+output:
+  pdf_document: default
+  html_document: default
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE, collapse = TRUE, comment = "#>")
+sessionInfo()
+library(bibliometrix)	
+library(tidyverse)
+library(stringr)
+library(knitr)
+library(forcats)
+library(ggplot2)
+library(ggthemes) #for ggplot2
+library(hrbrthemes)  #for ggplot2
+library(bibliometrix)
+#library(igraph) # for more advanced networks
+#library(patchwork) # for multi-panel figures
+library(RColorBrewer)
+library(wordcloud2)
+library(migest)
+library(circlize)
+```
+
+**Before the lesson:**\   
+
+Please make sure you got the latest versions installed of:\   
+\* R (<https://www.r-project.org/>)\   
+\* RStudio Desktop (<https://posit.co/downloads/>)\    
+
+**Lesson objectives:**   
+
+\* Import records that were included after Rayyan screening and merge with the original Scopus file.\   
+\* Process manual labels from Rayyan.\   
+\* Make simple plots based on labels.\     
+\* Make additional plots based on bibliometric information.\  
+
+# About this lesson   
+
+This lesson is prepared for these who have already completed "Learn markdown" and "Learn bibliometrics" lessons and are working on the projects that involve bibliometric analyses and systematic mapping (using Rayyan).   
+By the way, this document was created using markdown in RStudio!  
+
+------------------------------------------------------------------------  
+
+
+# Load files
+
+This is the same step as in "Learn bibliometrics" tutorial: Upload the file exported from Scopus (you can use the one provided) into RStudio (note that the file path you may need to use on your computer may be different, e.g., "H:/Users/z1234567/Downloads/scopus.bib").    
+
+Then, convert the data from that file into internal *bibliometrix* format:  
+
+```{r}
+bib <- convert2df("data/scopus.bib", dbsource = "scopus", format = "bibtex") # Convert to a bibliometric data frame
+names(bib)
+#write.csv(bib, "data/bib_as_df.csv", row.names = FALSE) #if you want to save this data frame as a csv file
+```
+
+Note that this is a data frame of all Scopus records before they were screened and labelled, but includes all the information that was exported from Scopus, but which is lost when we do screening in Rayyan.
+
+In Rayyan, after completeing screening, export all records, including labels, decisions, etc., as a .csv file.
+
+Now load the file which has all records exported from Rayyan:
+
+```{r}
+screened <- read.csv("./data/scopus_screened_labeled.csv")
+names(screened) #you can see there are fewer columns in the exported file
+dim(screened) #note that many fields get collapsed into the "notes" field
+
+#screened$notes[1] #contains export info, decisions and labels at the end 
+
+#extract record labels from notes column - i.e. string after "RAYYAN-INCLUSION: "
+screened$decisions_labels <- sub(".*RAYYAN-INCLUSION: ", "", screened$notes)
+screened$decisions_labels[1:10] #some have labels
+
+#filter out (remove) rows that contain the string 'Excluded' ' in the decisions_labels column:
+screened %>% filter(!grepl('Excluded', decisions_labels)) -> screened_included
+dim(screened_included) #350 records now - only included ones
+
+#extract record labels from decisions_labels column - i.e. string after "RAYYAN-LABELS: "
+screened_included$labels <- sub(".*RAYYAN-LABELS: ", "", screened_included$decisions_labels)
+
+#see what values are there per record:
+table(screened_included$labels) #some dont have labels: {"Losia"=>"Included"}
+
+screened_included$labels <- gsub('\\{"Losia"=>"Included"\\}', 'no labels', screened_included$labels) #replacing with new label "no labels", NOTE: instead, we could remove these records from analyses
+
+dim(screened_included) #345 records
+screened_included %>% filter(grepl('scopus', url)) %>% nrow() # 342 records from Scopus have doi contained in their url string: screened_included$url
+```
+
+Merge data frames by article titles
+
+```{r}
+#before joining by title, need to tidy up titles
+
+# Removing all punctuation and extra white spaces in bib object, in order to compare dataframes by Title:
+bib$TI2 <- str_replace_all(bib$TI,"[:punct:]","") %>% str_replace_all(.,"[ ]+", " ") 
+
+# Remove all punctuation and extra white spaces in screened_included object, in order to compare dataframes by Title:
+screened_included$TI2 <- str_to_upper(str_replace_all(screened_included$title,"[:punct:]","")) %>% str_replace_all(.,"[ ]+", " ")
+
+# The field 'TI2' will now be used for merging info from onto bib data frame
+bib_title <- left_join(bib, screened_included %>% dplyr::select(url, title, TI2, year, journal, labels), by = "TI2")
+table(is.na(bib_title$labels)) #346 records with labels, these were included in Rayyan
+
+#only keep rows with labels
+bib_title %>% filter(!is.na(labels)) -> bib_title_included
+dim(bib_title_included) #346 records included
+table(bib_title_included$labels) 
+names(bib_title_included) #now we have bibliometric file with only included articles and with labels
+```
+
+Test with bibliometrix   
+
+```{r}
+# Preliminary descriptive analyses using summary function
+results <- biblioAnalysis(bib_title_included, sep = ";")
+#summary(object = results, k = 10, pause = TRUE) #display a series of summary tables
+plot(results, k = 10, pause = TRUE) #this takes top 10 values from each table
+```
+
+
+# Process manual labels from Rayyan
+
+Lets assumme we have two groups types of labels 
+1. topic: animals OR soil
+2. animal_type: insects OR fish
+
+
+```{r}
+#create topic variable
+bib_title_included <- bib_title_included %>%          
+         mutate(topic = case_when(str_detect(labels, "animals") ~ "animals", #just animals
+                               str_detect(labels, "soil" ) ~ "soil", #just soil
+                               TRUE ~ "unclear")) #some will have none and we leave them as "unclear"
+names(bib_title_included)
+table(bib_title_included$topic)
+
+#create animal_type variable
+bib_title_included <- bib_title_included %>%          
+         mutate(animal_type = case_when(str_detect(labels, "insects") ~ "insects", #just animals
+                               str_detect(labels, "fish" ) ~ "fish", #just soil
+                               TRUE ~ "unclear")) #some will have none and we leave them as "unclear"
+names(bib_title_included)
+table(bib_title_included$animal_type)
+
+#we can do a table of counts by two variables at the same time:
+table(bib_title_included$topic, bib_title_included$animal_type)
+```
+
+# Make simple plots based on labels 
+
+Plot with one variable with label counts
+
+```{r}
+#calculate and sort by count
+count_topic <- bib_title_included %>%
+    count(topic) %>%
+    arrange(desc(n))
+
+#calculate percentages
+percent_topic <- count_topic %>%
+    mutate(percent = (n/sum(n)) * 100)
+
+#round percentages
+percent_topic$percent <- round(percent_topic$percent, digits = 0)
+
+#as factor and ordering for a nicer plot
+percent_topic$topic <- factor(percent_topic$topic,
+    level = percent_topic$topic[order(percent_topic$n, decreasing = TRUE)])
+
+#for manually setting fill colours
+my.cols <- (c("#BEAED4", "#FFFF99", "#386CB0")) 
+
+#make the plot
+ggplot(percent_topic, aes(x = topic, y = percent)) + 
+  geom_col(aes(fill = topic), width = 0.7) + 
+  geom_text(aes(label = percent), hjust = -0.2) + coord_flip() +
+  scale_y_continuous(name = "Percent (%)") + 
+  xlab("topic") + 
+  scale_fill_manual(values = my.cols) +
+  theme_classic() + 
+  theme(legend.position = "none")
+```
+
+Plot topic by year:
+
+```{r}
+bib_title_included %>%
+    count(year, topic) %>%
+    ggplot(aes(x = year, y = n, fill = topic)) + 
+    geom_col(width = 0.7) +
+    geom_text(position = position_stack(vjust = 0.5), aes(fill = topic, label = n)) + 
+    theme_classic() + 
+    labs(x = "Year", y = "Article count", fill = "Discipline") + 
+    theme(legend.position = "none", axis.title.x = element_text(size = 10))
+```
+
+
+# Make additional plots based on bibliometric information
+
+Bibliometric analysis - Keyword cloud
+
+```{r}
+bib2 <- biblioAnalysis(bib_title_included, sep = ";")
+S <- summary(object = bib2, k = 50, pause = FALSE) #only top 50 keywords
+keywords <- S$MostRelKeywords #exract single vector with most relevant keywords
+words <- keywords[, 1] #only using Author Keywords (DE) 
+freq <- as.numeric(keywords[, 2]) #vector of keyword frequencies for Author Keywords (DE) 
+prob <- freq/sum(freq)
+
+#words <- keywords[, 3] #only using Keywords-Plus (ID) 
+#freq <- as.numeric(keywords[, 4]) #vector of keyword frequencies for Keywords-Plus (ID) 
+#prob <- freq/sum(freq)
+
+wordcloud2(data.frame(words, prob), shuffle = TRUE, size = 0.5, color = "random-dark") 
+```
+
+Global map based on counts of affiliation country of first authors
+
+```{r}
+# Extract country information from the "AU1_CO" 
+bibmap <- metaTagExtraction(bib_title_included, Field = "AU1_CO", sep = ";") 
+bibmap <- metaTagExtraction(bibmap, Field = "AU_CO", sep = ";") #just getting the countries out of affiliations
+#table(bibmap$AU1_CO) #see the country counts as a simple table
+
+# Create a data frame with counts of articles from each country
+bibmap %>% 
+  group_by(AU1_CO) %>% 
+  count() %>% 
+  filter(!is.na(AU1_CO)) -> firstcountrycounts
+
+# Load world map data and remove countries with longitude >180 to make an equal projection-like map
+world_map <- map_data("world") %>% 
+  filter(! long > 180)
+
+# Format country names to match regions on the world map
+firstcountrycounts$region <- str_to_title(firstcountrycounts$AU1_CO)
+firstcountrycounts$region[firstcountrycounts$region == "Usa"] <- "USA" 
+firstcountrycounts$region[firstcountrycounts$region == "Korea"] <- "South Korea"
+
+# Join count data with map data and set missing counts to zero
+emptymap <- tibble(region = unique(world_map$region), n = rep(0,length(unique(world_map$region))))
+fullmap <- left_join(emptymap, firstcountrycounts, by = "region")
+fullmap$n <- fullmap$n.x + fullmap$n.y
+fullmap$n[is.na(fullmap$n)] <- 0
+
+# Create a plot of the world map with regions colored based on article counts
+fullmap %>% 
+  ggplot(aes(fill = n, map_id = region)) +
+  geom_map(map = world_map) +
+  expand_limits(x = world_map$long, y = world_map$lat) +
+  coord_map("moll") + # Mollweide projection
+  theme_map() + #nice simple theme for the map
+  scale_fill_gradient(low = "#ECF207", high = "#8B0000", # set color gradient
+                    name = "Score", na.value = "gray",
+                    limits = c(0.1, 24),
+                    guide = guide_colorbar(direction = "vertical.",
+                                           barwidth = unit(15, units = "mm"), 
+                                           barheight = unit(50, units = "mm"))) +
+  guides(fill = guide_colourbar()) +
+  theme(panel.background = element_rect(fill = "transparent", colour = NA),
+        plot.background = element_rect(fill = "transparent", colour = NA))
+```
+
+Chord diagram based on affiliation country of authors
+
+```{r}
+#using a bit different approach to get countries out
+bib3 <- metaTagExtraction(bib_title_included, Field = "AU_CO", sep = ";")
+NetMatrix <- biblioNetwork(bib3, analysis = "collaboration", network = "countries", sep = ";") #this extracts all sort of stuff
+results <- biblioAnalysis(bib3, sep = ";")
+
+S2 <- summary(object = results, k = 10, pause = FALSE) #only using top 20 countries
+MostProdCountries <- S2$MostProdCountries
+MostProdCountries$Articles <- as.numeric(MostProdCountries$Articles) #counts as numeric values
+Countries <- MostProdCountries[1:10, "Country"] #trim again to top 10, could change this to smaller number if needed
+Countries <- trimws(Countries) #trim white space after country name
+net_matrix <- as.matrix(NetMatrix) #convert to matrix
+str(net_matrix)
+intersect(rownames(net_matrix), Countries)
+setdiff(rownames(net_matrix), Countries)
+setdiff(Countries, rownames(net_matrix))
+small_matrix <- net_matrix[Countries, Countries]
+diag(small_matrix) <- 0  #get rid of collaboration with same country
+
+circos.clear() #prepare plotting area
+chordDiagramFromMatrix(small_matrix) #make the plot
+```
+
+# Resources
+See more colors in R and with ggplot2: http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+or https://r-charts.com/colors/ or https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html
+
+Co
